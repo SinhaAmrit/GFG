@@ -1,0 +1,116 @@
+---------------------------------------------------------
+| Q 2> Display longest name    ::    Difficulty: School |
+---------------------------------------------------------
+Given a list of names, display the longest name.
+
+Input:
+First line of input contains an integer T, the number of test cases. For each test case, there will be two lines. First line contains integer N i.e. total number of names, and second line contains N space seperated names of different length.
+
+Output:
+Longest name in the list of names.
+
+Constraints:
+1 <= T <= 10
+1 <= N <= 10
+1 <= |length of name| <= 1000
+
+Example:
+Input:
+1
+5
+Geek
+Geeks
+Geeksfor
+GeeksforGeek
+GeeksforGeeks
+
+Output:
+GeeksforGeeks
+
+/*******
+* Java *
+********/
+
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+	    while(t-->0){
+	    int n;
+	    n = sc.nextInt();
+	    int max=0;
+	    String arr[]=new String[n];
+	    for(int i=0; i<n;i++){
+	        arr[i] = sc.next();
+	    }
+	    String s = " ";
+	    for(int i=0;i<n;i++) {
+	        if(arr[i].length()>max){
+	        max = arr[i].length();
+	         s = arr[i];
+	        } 
+	    }  
+	    System.out.println(s);
+	    }
+	}
+}
+
+
+/********
+*  C++  *
+********/
+
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+	    int size;
+	cin>>size;
+	string str[size];
+	    for(int i =0;i<size;i++){
+	        cin>>str[i];
+	    }
+	    int pos =0;
+	    string longest_length;
+	    for(int i=0;i<size;i++){
+	        if(pos<str[i].length()){
+	           pos = str[i].length();
+	           longest_length = str[i];
+	        }
+	    }
+	     cout<<longest_length<<endl;
+	    }
+	return 0;
+}
+
+/******
+*  C  *
+******/
+
+int main() {
+	int T, N, i;
+    char str[10][100];
+    scanf("%d",&T);
+    while (T--) {
+        scanf("%d",&N);
+        int len = 0;
+        int strLen;
+        char *fix;
+        for (i = 0; i < N; i++) {
+            scanf("%s",str[i]);
+            strLen = strlen(str[i]);
+            if (len < strLen) {
+                len = strLen;
+                fix = str[i];
+            }
+            strLen = 0;
+        }
+        printf("%s\n", fix);
+    }
+	return 0;
+}
