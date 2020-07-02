@@ -1,0 +1,102 @@
+---------------------------------------------------------
+| Q 1> Sum of array elements   ::    Difficulty: School |
+---------------------------------------------------------
+Given an integer array A of size N, find sum of elements in it.
+
+Input:
+First line contains an integer denoting the test cases 'T'. T testcases follow. Each testcase contains two lines of input. First line contains N the size of the array A. The second line contains the elements of the array.
+
+Output:
+For each testcase, print the sum of all elements of the array in separate line.
+
+Constraints:
+1 <= T <= 100
+1 <= N <= 100
+1 <= Ai <= 100
+
+Example:
+Input:
+2
+3
+3 2 1
+4
+1 2 3 4
+Output:
+6
+10
+
+
+/*******
+* Java *
+********/
+
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner s = new Scanner(System.in);
+		int t; //Number of test cases.
+		t = s.nextInt();
+		while(t!=0){
+		    int n; //Number of elements.
+		    n = s.nextInt();
+		    int[] a = new int[n];
+		    int sum = 0;
+		    for(int i=0;i<n;i++)
+		    {
+		        a[i] = s.nextInt();
+		        sum+= a[i];
+		    }
+		    System.out.println(sum);
+		    t--;
+		}
+	}
+}
+
+
+/********
+*  C++  *
+********/
+
+#include<iostream>
+using namespace std;
+int main() {
+   int t;
+    cin>>t;
+    while(t--){
+        int i,n,sum=0;
+        cin>>n;
+        int a[n+1];
+        for(i=0;i<n;i++){
+            cin>>a[i];
+            sum=sum+a[i];
+        }
+        cout<<sum<<endl;
+    }
+	return 0;
+}
+
+
+/********
+*   C   *
+********/
+
+#include<stdio.h>
+#include<conio.h>
+int main() {
+    int t;
+    scanf("%d",&t);
+    while(t){
+        int n;
+        scanf("%d",&n);
+        int a[n],i,s=0;
+        for(i=0;i<n;i++){
+            scanf("%d",&a[i]);
+            s+=a[i];
+        }
+        printf("%d\n",s);
+        t--;
+    }
+	return 0;
+}
