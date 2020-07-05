@@ -1,0 +1,111 @@
+Source :: GeeksForGeeks                       Topic :: Array
+------------------------------------------------------------
+| Q 4> Reverse an Array       ::        Difficulty: School |
+------------------------------------------------------------
+Given an array A of size N, print the reverse of it.
+
+Input:
+First line contains an integer denoting the test cases 'T'. T testcases follow. Each testcase contains two lines of input. First line contains N the size of the array A. The second line contains the elements of the array.
+
+Output:
+For each testcase, in a new line, print the array in reverse order.
+
+Constraints:
+1 <= T <= 100
+1 <= N <=100
+0 <= Ai <= 100
+
+Example:
+Input:
+1
+4
+1 2 3 4
+Output:
+4 3 2 1
+
+/********
+* Java  *
+*********/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    static int[] reverse(String[] a) {
+        int[] in = new int[a.length];
+        int i=0;
+        for( int j=a.length-1 ;j>=0 ;j--){
+            in[i] = Integer.parseInt(a[j]);
+            i++;
+        }
+        return in;
+    }
+        
+	public static void main(String asgd[]) {
+        Scanner sc = new Scanner(System.in);
+        int nc = sc.nextInt();
+        sc.next();
+        sc.useDelimiter("\n");
+        String cases[] = new String[nc];
+        int i = 0;
+        while (i < nc) {
+            String n = sc.nextLine();
+            String arr = sc.nextLine();
+            cases[i] = arr;
+            i++;
+        }
+        for (int j = 0; j < nc; j++) {
+            String[] cas = cases[j].split(" ");
+            int n[] = reverse(cas);
+            for(int k:n)
+            System.out.print(k+" ");
+            System.out.println();
+        }
+        sc.close();
+    }
+}
+
+
+/******
+* C++ *
+*******/
+
+#include<iostream>
+#include<conio.h>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+	    int n;
+	    cin>>n;
+	    int a[n];
+	    for(int i=0;i<n;i++)
+	        cin>>a[i];
+	    for(int j=n-1;j>=0;j--)
+	        cout<<a[j]<<" ";
+	    cout<<"\n";
+	}
+	return 0;
+}
+
+/****
+* C *
+*****/
+
+
+int main() {
+int t,n,a[100],i,j;
+	scanf("%d",&t);
+	for(j=0;j<t;j++){
+	    scanf("%d",&n);
+	    for(i=0;i<n;i++)
+	     scanf("%d",&a[i]);
+	    for(i=n-1;i>=0;i--)
+	     printf("%d ",a[i]);
+	   printf("\n");  
+	}
+	return 0;
+}
