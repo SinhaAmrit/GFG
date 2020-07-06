@@ -1,0 +1,155 @@
+Source :: GeeksForGeeks                       Topic :: Array
+--------------------------------------------------------------
+| Q 5> Fascinating Number       ::        Difficulty: School |
+--------------------------------------------------------------
+Given a number N. Your task is to check whether it is fascinating or not.
+Fascinating Number : When a number( 3 digit or more) is multiplied by 2 and 3 ,and when both these products are concatenated with the original number, then it results in all digits from 1 to 9 present exactly once.
+
+Input:
+First line contains number of test cases T. Then following T lines contains a positive integer N.
+
+Output:
+Print "1" (without quotes) if given number is fascinating else "0" (without quotes) .
+
+Constraints:
+1 <= T <= 200
+100 <= N <= 107
+
+Example:
+Input:
+3
+192
+853
+
+Output:
+1
+0
+Explanation:
+Testcase 1: After multiplication with 2 and 3, and concatenating with original number, number will become 192384576 which contains all digits from 1 to 9.
+
+
+/********
+* Java  *
+*********/
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner s = new Scanner(System.in);
+		int t = s.nextInt();
+		while(t-->0){
+		   int n = s.nextInt();
+		   if(n<100)
+		        System.out.println("Number should be atleast three digits");
+		   else{
+		   String X =""+n+n*2+n*3;
+		   int count =0;
+		   for(int i =1;i<=9;i++)
+		       if(X.contains(Integer.toString(i)))
+		           count++;
+		    if( count==9)
+    	        System.out.println("Fascinating");
+    	    else
+    	        System.out.println("Not Fascinating");}
+    	        
+		}
+	}
+}
+
+/******
+* C++ *
+*******/
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t,n,p,i;
+	cin>>t;
+	while(t--){
+	    cin>>n;
+	    int a[10];
+	    fill(a,a+10,0);
+	    p=n;
+	    i=0;
+	    while(p){
+	        a[p%10]++;
+	        p=p/10;
+	        i++;
+	    }
+	    if(i>=3){
+	       p=2*n;
+	       while(p){
+	           a[p%10]++;
+	           p=p/10;
+	       }
+	       p=3*n;
+	       while(p){
+	           a[p%10]++;
+	           p=p/10;
+	       }
+	       int f=1;
+	       for(i=1;i<10;i++)
+	           if(a[i]==0){
+	               f=0;
+	               break;
+	           }
+	       if(f==1)
+	       cout<<"Fascinating"<<endl;
+	       else
+	       cout<<"Not Fascinating"<<endl;
+	    }  else
+	    cout<<"Number should be atleast three digits"<<endl;
+	}
+	return 0;
+}
+
+/****
+* C *
+*****/
+
+#include <stdio.h>
+int main() {
+    int t;
+	scanf("%d",&t);
+	while(t--){
+	    int n,p,q,j=0,l,c=0,a[20],sum=0,v,k,s;
+	    scanf("%d",&n);
+	    l=n;
+	    while(l){
+	        c++;
+	        l=l/10;
+	    }
+	    p=n*3;
+	    q=n*2;
+	    while(q){
+	        a[j]=q%10;
+	        j++;
+	        q=q/10;
+	    }
+	    while(p){
+	        a[j]=p%10;
+	        j++;
+	        p=p/10;
+	    }
+	    while(n){
+	        a[j]=n%10;
+	        j++;
+	        n=n/10;
+	    }
+	    for(v=0;v<j;v++){
+	        k=a[v];
+	        for(l=v+1;l<j;l++){
+	            if(a[l]==k)
+	            sum=30;
+	        }
+	    }
+	    if(c<3) printf("Number should be atleast three digits");
+	    else if(sum==30) printf("Not Fascinating");
+	    else
+	    printf("Fascinating");
+	    printf("\n");
+	}
+	return 0;
+}
